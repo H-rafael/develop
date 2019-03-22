@@ -1,6 +1,10 @@
+<style>
+    .typecho-edit-theme{
+        width: 100%;
+    }
+</style>
+<?php include 'common.php';?>
 <?php
-include 'common.php';
-
 $panel = $request->get('panel');
 $panelTable = unserialize($options->panelTable);
 
@@ -9,5 +13,10 @@ if (!isset($panelTable['file']) || !in_array(urlencode($panel), $panelTable['fil
 }
 
 list ($pluginName, $file) = explode('/', trim($panel, '/'), 2);
+?>
+
+
+<?php
 
 require_once $options->pluginDir($pluginName) . '/' . $panel;
+?>

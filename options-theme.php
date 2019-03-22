@@ -3,6 +3,12 @@ include 'common.php';
 include 'header.php';
 include 'menu.php';
 ?>
+<style>
+    .multiline input:checked ~ .box:before, .multiline input:checked ~ label:before
+    {
+        margin-left: -72px;
+    }
+</style>
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
         <div class="header-body">

@@ -8,7 +8,7 @@ function get_menu($class = 'active', $childClass = 'focus' ,$menu){
     $result_data = $menu->output('','',true);
     $arr_menu = $result_data['menu'];
     $_currentParent = $result_data['currentParent'];
-    $_currentChild = 0;
+    $_currentChild = $result_data['currentChild'];
     $_currentUrl ='';
     $arr_ic = array('ni-shop text-primary','ni-ungroup text-orange','ni-single-copy-04 text-pink','ni-ui-04 text-info');
     $i=1;
@@ -32,17 +32,16 @@ function get_menu($class = 'active', $childClass = 'focus' ,$menu){
                         <ul class="nav nav-sm flex-column">
                      ';
         $last = 0;
+
         foreach ($node[3] as $inKey => $inNode) {
             if (!$inNode[4]) {
                 $last = $inKey;
             }
         }
-
         foreach ($node[3] as $inKey => $inNode) {
             if ($inNode[4]) {
                 continue;
             }
-
             $classes = array();
             if ($key == $_currentParent && $inKey == $_currentChild) {
                 $classes[] = $childClass;
@@ -53,12 +52,12 @@ function get_menu($class = 'active', $childClass = 'focus' ,$menu){
             if ($inKey == $last) {
                 $classes[] = 'last';
             }
-            echo ' <li class="nav-item">
-                        <a href="'.($key == $_currentParent && $inKey == $_currentChild ? $_currentUrl : $inNode[2]).'" class="nav-link">'.$inNode[0].'</a>
+            $color = $inKey == $_currentChild ? "color: brown":"";
+            echo ' <li class="nav-item" >
+                        <a href="'.($key == $_currentParent && $inKey == $_currentChild ? $_currentUrl : $inNode[2]).'" class="nav-link" style="'.$color .'">'.$inNode[0].'</a>
                    </li>';
         }
+
         echo'  </ul></div></li>';
     }
-
-
 }

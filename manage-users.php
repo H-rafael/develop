@@ -65,7 +65,8 @@ Typecho_Widget::widget('Widget_Metas_Category_Admin')->to($categories);
                                 </div>
                             </div>
                         </form>
-                        <table class="table align-items-center table-flush table-hover">
+                        <form method="post" name="manage_users" class="operate-form">
+                            <table class="table align-items-center table-flush table-hover typecho-list-table">
                             <thead class="thead-light">
                             <tr>
                                 <th> </th>
@@ -111,6 +112,7 @@ Typecho_Widget::widget('Widget_Metas_Category_Admin')->to($categories);
                             <?php endwhile; ?>
                             </tbody>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>

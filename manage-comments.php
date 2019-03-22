@@ -73,21 +73,21 @@ $isAllComments = ('on' == $request->get('__typecho_all_comments') || 'on' == Typ
                     <div id="datatable-buttons_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <form method="get">
                             <div class="dt-buttons btn-group" style="padding-bottom: 9px;">
-                            <div class="operate">
-                                <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox" class="typecho-table-select-all" /></label>
-                                <div class="btn-group btn-drop">
-                                    <button class="btn dropdown-toggle btn btn-primary btn-sm" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php $security->index('/action/comments-edit?do=approved'); ?>"><?php _e('通过'); ?></a></li>
-                                        <li><a href="<?php $security->index('/action/comments-edit?do=waiting'); ?>"><?php _e('待审核'); ?></a></li>
-                                        <li><a href="<?php $security->index('/action/comments-edit?do=spam'); ?>"><?php _e('标记垃圾'); ?></a></li>
-                                        <li><a lang="<?php _e('你确认要删除这些评论吗?'); ?>" href="<?php $security->index('/action/comments-edit?do=delete'); ?>"><?php _e('删除'); ?></a></li>
-                                    </ul>
-                                    <?php if('spam' == $request->get('status')): ?>
-                                        <button lang="<?php _e('你确认要删除所有垃圾评论吗?'); ?>" class="btn btn-s btn-danger" style="margin-left: .3rem;" href="<?php $security->index('/action/comments-edit?do=delete-spam'); ?>"><?php _e('删除所有垃圾评论'); ?></button>
-                                    <?php endif; ?>
+                                <div class="operate">
+                                    <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox" class="typecho-table-select-all" /></label>
+                                    <div class="btn-group btn-drop">
+                                        <button class="btn dropdown-toggle btn btn-primary btn-sm" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="<?php $security->index('/action/comments-edit?do=approved'); ?>"><?php _e('通过'); ?></a></li>
+                                            <li><a href="<?php $security->index('/action/comments-edit?do=waiting'); ?>"><?php _e('待审核'); ?></a></li>
+                                            <li><a href="<?php $security->index('/action/comments-edit?do=spam'); ?>"><?php _e('标记垃圾'); ?></a></li>
+                                            <li><a lang="<?php _e('你确认要删除这些评论吗?'); ?>" href="<?php $security->index('/action/comments-edit?do=delete'); ?>"><?php _e('删除'); ?></a></li>
+                                        </ul>
+                                        <?php if('spam' == $request->get('status')): ?>
+                                            <button lang="<?php _e('你确认要删除所有垃圾评论吗?'); ?>" class="btn btn-s btn-danger" style="margin-left: .3rem;" href="<?php $security->index('/action/comments-edit?do=delete-spam'); ?>"><?php _e('删除所有垃圾评论'); ?></button>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                             <div id="datatable-buttons_filter" class="dataTables_filter">
                                 <div class="search" role="search">
@@ -108,6 +108,7 @@ $isAllComments = ('on' == $request->get('__typecho_all_comments') || 'on' == Typ
                                 </div>
                             </div>
                         </form>
+                        <form method="post" name="manage_comments" class="operate-form">
                         <table class="table align-items-center table-flush table-hover typecho-list-table">
                             <thead class="thead-light">
                             <tr>
@@ -199,6 +200,7 @@ $isAllComments = ('on' == $request->get('__typecho_all_comments') || 'on' == Typ
                             <?php endif; ?>
                             </tbody>
                         </table>
+                        </form>
                         <div class="row" style="border-top: 1px solid #e9ecef;padding-top: 10px;">
                             <div class="col-sm-12 col-md-5">
                                 <div class="dataTables_info" id="datatable-basic_info" role="status" aria-live="polite">
@@ -206,22 +208,7 @@ $isAllComments = ('on' == $request->get('__typecho_all_comments') || 'on' == Typ
                             </div>
                             <div class="col-sm-12 col-md-7">
                                 <div class="dataTables_paginate paging_simple_numbers" id="datatable-basic_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="datatable-basic_previous">
-                                            <a href="#" aria-controls="datatable-basic" data-dt-idx="0" tabindex="0" class="page-link">
-                                                <i class="fas fa-angle-left"></i>
-                                            </a>
-                                        </li>
-
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" aria-controls="datatable-basic" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable-basic" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable-basic" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item next" id="datatable-basic_next"><a href="#" aria-controls="datatable-basic" data-dt-idx="7" tabindex="0" class="page-link"><i class="fas fa-angle-right"></i></a></li>
-                                    </ul>
-
-                                    <ul class="pagination">
+                                    <ul class="typecho-pager">
                                         <li class="current"><a href="http://bl.cc/admin/manage-posts.php?page=1">1</a></li>                                        </ul>
                                 </div>
                             </div>

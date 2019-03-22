@@ -42,8 +42,9 @@ Typecho_Widget::widget('Widget_Metas_Category_Admin')->to($categories);
                 </div>
                 <div class="table-responsive py-4">
                     <div id="datatable-buttons_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <form method="get">
-                            <div class="dt-buttons btn-group">
+                        <form method="post" name="manage_categories" class="operate-form">
+
+                        <div class="dt-buttons btn-group">
                                 <div class="operate" style="margin-bottom: 4px;">
                                     <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox" class="typecho-table-select-all" /></label>
                                     <div class="btn-group btn-drop">
@@ -64,8 +65,7 @@ Typecho_Widget::widget('Widget_Metas_Category_Admin')->to($categories);
                             <div id="datatable-buttons_filter" class="dataTables_filter">
 
                             </div>
-                        </form>
-                        <table class="table align-items-center table-flush table-hover">
+                        <table class="table align-items-center table-flush table-hover typecho-list-table">
                             <thead class="thead-light">
                             <tr class="nodrag">
                                 <th> </th>
@@ -111,6 +111,7 @@ Typecho_Widget::widget('Widget_Metas_Category_Admin')->to($categories);
                             <?php endif; ?>
                             </tbody>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>

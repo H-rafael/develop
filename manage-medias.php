@@ -65,7 +65,8 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                 </div>
                             </div>
                         </form>
-                        <table class="table align-items-center table-flush table-hover">
+                        <form method="post" name="manage_medias" class="operate-form">
+                         <table class="table align-items-center table-flush table-hover typecho-list-table">
                             <thead class="thead-light">
                             <tr>
                                 <th> </th>
@@ -106,6 +107,7 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                             <?php endif; ?>
                             </tbody>
                         </table>
+                        </form>
                         <div class="row" style="border-top: 1px solid #e9ecef;padding-top: 10px;">
                             <div class="col-sm-12 col-md-5">
                                 <div class="dataTables_info" id="datatable-basic_info" role="status" aria-live="polite">
@@ -113,20 +115,6 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                             </div>
                             <div class="col-sm-12 col-md-7">
                                 <div class="dataTables_paginate paging_simple_numbers" id="datatable-basic_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="datatable-basic_previous">
-                                            <a href="#" aria-controls="datatable-basic" data-dt-idx="0" tabindex="0" class="page-link">
-                                                <i class="fas fa-angle-left"></i>
-                                            </a>
-                                        </li>
-
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" aria-controls="datatable-basic" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable-basic" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable-basic" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item next" id="datatable-basic_next"><a href="#" aria-controls="datatable-basic" data-dt-idx="7" tabindex="0" class="page-link"><i class="fas fa-angle-right"></i></a></li>
-                                    </ul>
 
                                     <?php if($attachments->have()): ?>
                                         <ul class="typecho-pager">

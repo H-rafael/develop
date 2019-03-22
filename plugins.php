@@ -37,7 +37,7 @@ include 'menu.php';
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush table-hover">
+                    <table class="table align-items-center table-flush table-hover typecho-list-table">
                         <thead class="thead-light">
                         <tr>
                             <th><?php _e('名称'); ?></th>
@@ -100,7 +100,7 @@ include 'menu.php';
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush table-hover">
+                    <table class="table align-items-center table-flush table-hover typecho-list-table">
                         <thead class="thead-light">
                         <tr>
                             <th><?php _e('名称'); ?></th>

@@ -36,21 +36,24 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                         <span class="h2 font-weight-bold mb-0"><?php _e($stat->myPublishedPostsNum); ?> 篇</span>
                                     </div>
                                     <div class="col-auto">
-
-
                                         <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
                                             <i class="ni ni-active-40"></i>
                                         </div>
                                     </div>
                                 </div>
-<!--                                <p class="mt-3 mb-0 text-sm">-->
-<!--                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
-<!--                                    <span class="text-nowrap">Since last month</span>-->
-<!--                                </p>-->
+                                <?php if($user->pass('contributor', true)): ?>
+                                    <?php if($user->pass('administrator', true)): ?>
+                                        <p class="mt-3 mb-0 text-sm">
+                                            <a href="<?php $options->adminUrl('write-post.php'); ?>" class="text-success mr-2"><?php _e('撰写新文章'); ?></a>
+                                            <a href="<?php $options->adminUrl('themes.php'); ?>" class="text-nowrap"><?php _e('更换外观'); ?></a>
+                                        </p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-xl-4 col-md-6">
                         <div class="card card-stats">
                             <!-- Card body -->
                             <div class="card-body">
@@ -65,10 +68,23 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                         </div>
                                     </div>
                                 </div>
-<!--                                <p class="mt-3 mb-0 text-sm">-->
-<!--                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
-<!--                                    <span class="text-nowrap">Since last month</span>-->
-<!--                                </p>-->
+                                <?php if($user->pass('contributor', true)): ?>
+                                    <?php if($user->pass('editor', true) && 'on' == $request->get('__typecho_all_comments') && $stat->spamCommentsNum > 0): ?>
+                                        <p class="mt-3 mb-0 text-sm">
+                                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->mySpamCommentsNum(); ?></span>
+                                            <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap"><?php _e('垃圾评论'); ?></a>
+                                        </p>
+                                    <?php elseif($stat->mySpamCommentsNum > 0): ?>
+                                        <p class="mt-3 mb-0 text-sm">
+                                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->mySpamCommentsNum(); ?></span>
+                                            <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap text-danger"><?php _e('垃圾评论'); ?></a>
+                                            &nbsp;
+                                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->mySpamCommentsNum(); ?></span>
+                                            <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap"><?php _e('待审核评论'); ?></a>
+                                        </p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
                             </div>
                         </div>
                     </div>
@@ -87,7 +103,14 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                         </div>
                                     </div>
                                 </div>
-
+                                <?php if($user->pass('contributor', true)): ?>
+                                    <?php if($user->pass('administrator', true)): ?>
+                                        <p class="mt-3 mb-0 text-sm">
+                                            <a href="<?php $options->adminUrl('plugins.php'); ?>" class="text-success mr-2"><?php _e('插件管理'); ?></a>
+                                            <a href="<?php $options->adminUrl('options-general.php'); ?>" class="text-nowrap "><?php _e('系统设置'); ?></a>
+                                        </p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -99,6 +122,50 @@ $stat = Typecho_Widget::widget('Widget_Stat');
     <!-- Page content -->
     <div class="container-fluid mt--6">
         <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <!-- Title -->
+                        <h5 class="h3 mb-0"><?php _e('最近得到的回复'); ?></h5>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body p-0">
+                        <!-- List group -->
+                        <div class="list-group list-group-flush" >
+
+                            <?php Typecho_Widget::widget('Widget_Comments_Recent', 'pageSize=8')->to($comments); ?>
+                            <?php if($comments->have()): ?>
+                                <?php while($comments->next()):
+
+                                    ?>
+
+                                    <a href="<?php $comments->permalink(); ?>" style="margin-bottom: -19px;" class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <div>
+                                                <div class="d-flex w-100 align-items-center">
+                                                    <img src="<?php echo Typecho_Common::gravatarUrl($comments->mail, 220, 'X', 'mm', $request->isSecure()) . '" alt="' . $user->screenName?>" alt="Image placeholder" class="avatar avatar-xs mr-2">
+                                                    <h5 class="mb-1"><?php echo $comments->author?></h5>
+                                                </div>
+                                            </div>
+                                            <small><?php $comments->date('n.j'); ?></small>
+                                        </div>
+                                        <p class="text-sm mb-0"><?php $comments->excerpt(35, '...'); ?></p>
+                                    </a>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
+                                    <div class="d-flex w-100 justify-content-between">
+
+                                    </div>
+                                    <h4 class="mt-3 mb-1" style="text-align: center;"><span class="text-info">●</span> 暂无评论</h4>
+                                </a>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-4">
                 <!-- Image-Text card -->
 
@@ -145,71 +212,9 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                         </ul>
                     </div>
                 </div>
-
-
-                <!-- Messages -->
-
-
-                <!-- Master card -->
-
             </div>
 
-
-
             <div class="col-lg-4">
-                <!-- Calendar widget -->
-                <!--* Card header *-->
-                <!--* Card body *-->
-                <!--* Card init *-->
-
-                <div class="card">
-                    <!-- Card header -->
-                    <div class="card-header">
-                        <!-- Title -->
-                        <h5 class="h3 mb-0"><?php _e('最近得到的回复'); ?></h5>
-                    </div>
-                    <!-- Card body -->
-                    <div class="card-body p-0">
-                        <!-- List group -->
-                        <div class="list-group list-group-flush" >
-
-                            <?php Typecho_Widget::widget('Widget_Comments_Recent', 'pageSize=10')->to($comments); ?>
-                            <?php if($comments->have()): ?>
-                            <?php while($comments->next()):
-
-                            ?>
-
-                            <a href="<?php $comments->permalink(); ?>" style="margin-bottom: -19px;" class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <div>
-                                        <div class="d-flex w-100 align-items-center">
-                                            <img src="<?php echo Typecho_Common::gravatarUrl($comments->mail, 220, 'X', 'mm', $request->isSecure()) . '" alt="' . $user->screenName?>" alt="Image placeholder" class="avatar avatar-xs mr-2">
-                                            <h5 class="mb-1"><?php echo $comments->author?></h5>
-                                        </div>
-                                    </div>
-                                    <small><?php $comments->date('n.j'); ?></small>
-                                </div>
-                                <p class="text-sm mb-0"><?php $comments->excerpt(35, '...'); ?></p>
-                            </a>
-                                <?php endwhile; ?>
-                            <?php else: ?>
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
-                                    <div class="d-flex w-100 justify-content-between">
-
-                                    </div>
-                                    <h4 class="mt-3 mb-1" style="text-align: center;"><span class="text-info">●</span> 暂无评论</h4>
-                                </a>
-                            <?php endif; ?>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- Vector map -->
-                <!--* Card header *-->
-                <!--* Card body *-->
-                <!--* Card init *-->
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">

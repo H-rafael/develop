@@ -63,7 +63,8 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                 </div>
                             </div>
                         </form>
-                        <table class="table align-items-center table-flush table-hover">
+                        <form method="post" name="manage_pages" class="operate-form">
+                        <table class="table align-items-center table-flush table-hover typecho-list-table">
                             <thead class="thead-light">
                             <tr class="nodrag">
                                 <th> </th>
@@ -117,6 +118,7 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                             <?php endif; ?>
                             </tbody>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>
