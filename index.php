@@ -74,13 +74,22 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->mySpamCommentsNum(); ?></span>
                                             <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap"><?php _e('垃圾评论'); ?></a>
                                         </p>
+
                                     <?php elseif($stat->mySpamCommentsNum > 0): ?>
                                         <p class="mt-3 mb-0 text-sm">
                                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->mySpamCommentsNum(); ?></span>
                                             <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap text-danger"><?php _e('垃圾评论'); ?></a>
-                                            &nbsp;
-                                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->mySpamCommentsNum(); ?></span>
+
+                                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->myWaitingCommentsNum(); ?></span>
                                             <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap"><?php _e('待审核评论'); ?></a>
+                                        </p>
+                                    <?php  else :
+                                        ?>
+
+
+                                        <p class="mt-3 mb-0 text-sm">
+                                            <span class="text-success mr-2"></span>
+                                            <a href="<?php $options->adminUrl('manage-comments.php'); ?>" class="text-success"><?php _e('所有评论'); ?></a>
                                         </p>
                                     <?php endif; ?>
                                 <?php endif; ?>

@@ -186,10 +186,9 @@ $isAllPosts = ('on' == $request->get('__typecho_all_posts') || 'on' == Typecho_C
                             </div>
                             <div class="col-sm-12 col-md-7">
                                 <div class="dataTables_paginate paging_simple_numbers" id="datatable-basic_paginate">
-                                    <?php if($posts->have()):
-                                        ?>
+                                    <?php if($posts->have()): ?>
                                         <ul class="typecho-pager">
-                                            <?php $posts->pageNav('<', '>',1,'...',array('wrapTag' => 'ul', 'wrapClass' => 'pagination','itemTag' => 'li','currentClass' => 'paginate_button page-item',)); ?>
+                                            <?php $posts->pageNav(); ?>
                                         </ul>
                                     <?php endif; ?>
                                 </div>

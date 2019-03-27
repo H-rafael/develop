@@ -29,13 +29,12 @@ $header = Typecho_Plugin::factory('admin/header.php')->header($header);
     <!-- Argon CSS -->
     <script src="./simple/js/jquery.min.js"></script>
     <!-- Favicon -->
-<!--    <link rel="icon" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/brand/favicon.png" type="image/png">-->
         <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="./simple/css/all.min.css" type="text/css">
     <!-- Page plugins -->
     <link rel="stylesheet" href="./simple/css/fullcalendar.min.css">
     <link rel="stylesheet" href="./simple/css/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="./simple/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="./simple/css/argon.min.css?v=1.0.0" type="text/css">
     <link rel="stylesheet" href="./simple/css/admin-css.css" type="text/css">
 

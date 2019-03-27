@@ -8,6 +8,9 @@ include 'menu.php';
     {
         margin-left: -72px;
     }
+    .multiline .box:before, .multiline label:before{
+        margin-left: -72px;
+    }
 </style>
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
