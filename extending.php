@@ -1,7 +1,9 @@
 <style>
     .typecho-edit-theme{
         width: 100%;
+        font-size: .65rem;
     }
+    .typecho-list-table{font-size: .65rem;}
 </style>
 <?php include 'common.php';?>
 <?php
