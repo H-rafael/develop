@@ -123,7 +123,8 @@ Typecho_Widget::widget('Widget_Contents_Page_Edit')->to($page);
                                 <li class="active w-50"><a href="#tab-advance"><?php _e('选项'); ?></a></li>
                                 <li class="w-50"><a href="#tab-files" id="tab-files-btn"><?php _e('附件'); ?></a></li>
                             </ul>
-                            <div id="tab-advance" class="tab-content card-body">
+<!--                            card-body-->
+                            <div id="tab-advance" class="tab-content ">
                                 <section  class="typecho-post-option" role="application">
                                     <label for="date" class="typecho-label form-control-label"><?php _e('发布日期'); ?></label>
                                     <p><input class="typecho-date w-100 form-control form-control-sm" type="text" name="date" id="date" value="<?php $page->have() ? $page->date('Y-m-d H:i') : ''; ?>" /></p>
