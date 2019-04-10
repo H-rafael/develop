@@ -81,7 +81,7 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                                             <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap text-danger"><?php _e('垃圾评论'); ?></a>
 
                                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php $stat->myWaitingCommentsNum(); ?></span>
-                                            <a href="<?php $options->adminUrl('manage-comments.php?status=spam'); ?>" class="text-nowrap"><?php _e('待审核评论'); ?></a>
+                                            <a href="<?php $options->adminUrl('manage-comments.php?status=waiting'); ?>" class="text-nowrap"><?php _e('待审核评论'); ?></a>
                                         </p>
                                     <?php  else :
                                         ?>

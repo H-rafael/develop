@@ -57,7 +57,7 @@ $isAllComments = ('on' == $request->get('__typecho_all_comments') || 'on' == Typ
                                 <div class="operate">
                                     <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox" class="typecho-table-select-all" /></label>
                                     <div class="btn-group btn-drop">
-                                        <button class="btn dropdown-toggle btn btn-primary btn-sm" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> </button>
+                                        <button class="btn dropdown-toggle btn btn-primary btn-sm" type="button" style="margin-right: 8px;"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> </button>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php $security->index('/action/comments-edit?do=approved'); ?>"><?php _e('通过'); ?></a></li>
                                             <li><a href="<?php $security->index('/action/comments-edit?do=waiting'); ?>"><?php _e('待审核'); ?></a></li>

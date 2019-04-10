@@ -40,6 +40,9 @@ Typecho_Widget::widget('Widget_Contents_Page_Edit')->to($page);
     #file-list{
         font-size: .81rem;
     }
+    .input_with div{
+        width: 20%;
+    }
 </style>
 <?php include 'menu_title.php'; ?>
 
@@ -83,8 +86,9 @@ Typecho_Widget::widget('Widget_Contents_Page_Edit')->to($page);
                                 }
                                 $input = '<input type="text" id="slug" style="height: 26px;width: 48px;background: #FFFBCC; margin-top: -8px;" name="slug" autocomplete="off" value="' . htmlspecialchars($page->slug) . '" class="mono" />';
                                 ?>
-                                <div class="mono url-slug form-group" style="font-size: .8rem;">
+                                <div class="mono url-slug form-group input_with" style="font-size: .8rem;">
                                     <label for="slug" class="sr-only form-control-label"><?php _e('网址缩略名'); ?></label>
+
                                     <?php echo preg_replace("/\{slug\}/i", $input, $permalink); ?>
                                 </div>
 

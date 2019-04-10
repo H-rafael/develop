@@ -29,7 +29,7 @@ $header = Typecho_Plugin::factory('admin/header.php')->header($header);
     <!-- Argon CSS -->
     <script src="./simple/js/jquery.min.js"></script>
     <!-- Favicon -->
-        <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+        <link rel="stylesheet" href="./simple/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="./simple/css/all.min.css" type="text/css">
     <!-- Page plugins -->
     <link rel="stylesheet" href="./simple/css/fullcalendar.min.css">
