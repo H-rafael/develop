@@ -16,7 +16,7 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                 <div class="card-header">
                     <div class="clearfix">
                         <h3 style="float: left;margin-right: 16px;">管理独立页面</h3>
-                        <a href="/admin/category.php" class="btn btn-primary btn-sm" target="_blank">新增</a>
+                        <a href="/admin/write-page.php" class="btn btn-primary btn-sm" target="_blank">新增</a>
                     </div>
                     <p class="text-sm mb-0">
                     </p>

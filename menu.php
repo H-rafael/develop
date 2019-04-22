@@ -30,11 +30,13 @@ $stat = Typecho_Widget::widget('Widget_Stat');
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <!-- Nav items -->
                 <ul class="navbar-nav">
+
+                  
                     <?php   $arr = get_menu('active','show',$menu); ?>
 
                     <li class="nav-item">
                         <a class="nav-link"  href="/admin/write-post.php">
-                            <i class=" ni ni-align-left-2 text-default"></i>
+                            <i class=" ni ni-align-left-2 text-d texlt"></i>
                             <span class="nav-link-text">撰写新文章</span>
                         </a>
                     </li>
